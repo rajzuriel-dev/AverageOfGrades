@@ -1,0 +1,446 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Term Grade Calculator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+            color: #222;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 40px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #e9edf2;
+        }
+
+        th:first-child,
+        td:first-child {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 9px;
+            border: 1px solid #bbb;
+            border-radius: 7px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        input:focus {
+            outline: 2px solid #4a90e2;
+            border-color: transparent;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #333;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .results {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f7f8fa;
+            border-radius: 10px;
+        }
+
+        .result-card {
+            padding: 15px;
+            margin-bottom: 12px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            font-size: 18px;
+        }
+
+        .average {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .status {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .passed {
+            color: #16803c;
+        }
+
+        .failed {
+            color: #c62828;
+        }
+
+        .overall {
+            border-top: 3px solid #333;
+            margin-top: 18px;
+            padding-top: 18px;
+        }
+
+        .error {
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                margin: 10px;
+                padding: 12px;
+            }
+
+            th, td {
+                padding: 7px;
+            }
+
+            input {
+                font-size: 14px;
+            }
+
+            .result-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Term Grade Calculator</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Term 1</th>
+                <th>Term 2</th>
+                <th>Term 3</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Math</td>
+                <td><input type="number" class="term1" min="0" max="100"></td>
+                <td><input type="number" class="term2" min="0" max="100"></td>
+                <td><input type="number" class="term3" min="0" max="100"></td>
+            </tr>
+
+            <tr>
+                <td>GMRC/ESP</td>
+                <td><input type="number" class="term1" min="0" max="100"></td>
+                <td><input type="number" class="term2" min="0" max="100"></td>
+                <td><input type="number" class="term3" min="0" max="100"></td>
+            </tr>
+
+            <tr>
+                <td>English</td>
+                <td><input type="number" class="term1" min="0" max="100"></td>
+                <td><input type="number" class="term2" min="0" max="100"></td>
+                <td><input type="number" class="term3" min="0" max="100"></td>
+            </tr>
+
+            <tr>
+                <td>Science</td>
+                <td><input type="number" class="term1" min="0" max="100"></td>
+                <td><input type="number" class="term2" min="0" max="100"></td>
+                <td><input type="number" class="term3" min="0" max="100"></td>
+            </tr>
+
+            <tr>
+                <td>Aral Pan</td>
+                <td><input type="number" class="term1" min="0" max="100"></td>
+                <td><input type="number" class="term2" min="0" max="100"></td>
+                <td><input type="number" class="term3" min="0" max="100"></td>
+            </tr>
+
+            <tr>
+                <td>Filipino</td>
+                <td><input type="number" class="term1" min="0" max="100"></td>
+                <td><input type="number" class="term2" min="0" max="100"></td>
+                <td><input type="number" class="term3" min="0" max="100"></td>
+            </tr>
+
+            <tr>
+                <td>MAPEH</td>
+                <td><input type="number" class="term1" min="0" max="100"></td>
+                <td><input type="number" class="term2" min="0" max="100"></td>
+                <td><input type="number" class="term3" min="0" max="100"></td>
+            </tr>
+
+            <tr>
+                <td>ICT/EPP</td>
+                <td><input type="number" class="term1" min="0" max="100"></td>
+                <td><input type="number" class="term2" min="0" max="100"></td>
+                <td><input type="number" class="term3" min="0" max="100"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="buttons">
+        <button onclick="calculateTerm(1)">Submit Term 1</button>
+        <button onclick="calculateTerm(2)">Submit Term 2</button>
+        <button onclick="calculateTerm(3)">Submit Term 3</button>
+        <button onclick="calculateAll()">Submit All</button>
+    </div>
+
+    <div class="results" id="results">
+        <strong>Results will appear here.</strong>
+    </div>
+
+</div>
+
+<script>
+
+    // Determine performance level and pass/fail status
+    function getPerformance(average) {
+
+        if (average >= 90) {
+            return {
+                level: "Advancing",
+                status: "Passed",
+                className: "passed"
+            };
+        }
+
+        if (average >= 80) {
+            return {
+                level: "Benchmarking",
+                status: "Passed",
+                className: "passed"
+            };
+        }
+
+        if (average >= 75) {
+            return {
+                level: "Connecting",
+                status: "Passed",
+                className: "passed"
+            };
+        }
+
+        if (average >= 65) {
+            return {
+                level: "Developing",
+                status: "Failed",
+                className: "failed"
+            };
+        }
+
+        return {
+            level: "Emerging",
+            status: "Failed",
+            className: "failed"
+        };
+    }
+
+
+    // Calculate average for a specific term
+    function getTermAverage(term) {
+
+        const inputs = document.querySelectorAll(".term" + term);
+
+        let total = 0;
+        let count = 0;
+
+        inputs.forEach(input => {
+
+            if (input.value !== "") {
+
+                const grade = Number(input.value);
+
+                if (grade >= 0 && grade <= 100) {
+                    total += grade;
+                    count++;
+                }
+            }
+        });
+
+        if (count === 0) {
+            return null;
+        }
+
+        return total / count;
+    }
+
+
+    // Format average
+    function formatAverage(value) {
+        return value.toFixed(2);
+    }
+
+
+    // Create result card
+    function createResult(title, average) {
+
+        const performance = getPerformance(average);
+
+        return `
+            <div class="result-card">
+
+                <div class="result-row">
+                    <span>${title}</span>
+                    <span class="average">${formatAverage(average)}</span>
+                </div>
+
+                <div>
+                    Performance Level:
+                    <strong>${performance.level}</strong>
+                </div>
+
+                <div class="status ${performance.className}">
+                    ${performance.status}
+                </div>
+
+            </div>
+        `;
+    }
+
+
+    // Calculate one term
+    function calculateTerm(term) {
+
+        const average = getTermAverage(term);
+
+        const results = document.getElementById("results");
+
+        if (average === null) {
+
+            results.innerHTML = `
+                <div class="error">
+                    Please enter at least one grade for Term ${term}.
+                </div>
+            `;
+
+            return;
+        }
+
+        results.innerHTML = createResult(
+            "Term " + term + " Average:",
+            average
+        );
+    }
+
+
+    // Calculate all terms
+    function calculateAll() {
+
+        const term1 = getTermAverage(1);
+        const term2 = getTermAverage(2);
+        const term3 = getTermAverage(3);
+
+        let output = "";
+
+        const availableTerms = [];
+
+        if (term1 !== null) {
+            output += createResult("Term 1 Average:", term1);
+            availableTerms.push(term1);
+        }
+
+        if (term2 !== null) {
+            output += createResult("Term 2 Average:", term2);
+            availableTerms.push(term2);
+        }
+
+        if (term3 !== null) {
+            output += createResult("Term 3 Average:", term3);
+            availableTerms.push(term3);
+        }
+
+
+        if (availableTerms.length === 0) {
+
+            document.getElementById("results").innerHTML = `
+                <div class="error">
+                    Please enter at least one grade.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        // Overall average
+        const overall =
+            availableTerms.reduce(
+                (sum, value) => sum + value, 0
+            ) / availableTerms.length;
+
+
+        output += `
+            <div class="overall">
+                ${createResult("Overall Average:", overall)}
+            </div>
+        `;
+
+        document.getElementById("results").innerHTML = output;
+    }
+
+</script>
+
+</body>
+</html>
